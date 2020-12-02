@@ -5,3 +5,8 @@ export interface Token {
   exp: number;
   iat: number;
 }
+
+export interface ResponseToken {
+  id: string;
+  token: Token;
+}

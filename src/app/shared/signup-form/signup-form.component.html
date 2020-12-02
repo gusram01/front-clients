@@ -1,0 +1,79 @@
+<!-- (ngSubmit)="onSubmit()" -->
+<mat-card class="form__card">
+  <form
+    [formGroup]="signupForm"
+    class="form animated fadeInRight"
+    (submit)="onSubmit()"
+  >
+    <mat-card-content class="form__body">
+      <mat-form-field class="form__item" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Enter yor username"
+          formControlName="nick"
+        />
+        <mat-error>
+          Please write a valid <strong>UNIQUE</strong> Username</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field class="form__item" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="Enter yor email"
+          formControlName="email"
+        />
+        <mat-error>
+          Please write a valid <strong>UNIQUE</strong> Email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form__item" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Enter your password"
+          formControlName="password"
+        />
+        <mat-error> Password is <strong>required</strong> </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form__item" appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Confirm your password"
+          formControlName="confirm"
+        />
+        <mat-error> Please confirm your password </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions class="form__actions">
+      <div *ngIf="!isHome" class="actions__links">
+        <a mat-button color="accent">
+          <!-- (click)="back()"  -->
+          <mat-icon>keyboard_arrow_left</mat-icon>
+          Go Back
+        </a>
+        <a mat-button routerLink="login" color="primary">Go to LogIn!</a>
+      </div>
+      <button
+        class="actions__button"
+        [disabled]="loading"
+        mat-raised-button
+        color="primary"
+        type="submit"
+      >
+        <span class="btn-text"> Signup </span>
+        <mat-icon>login</mat-icon>
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>
