@@ -7,11 +7,6 @@ const routes: Routes = [
     path: 'dashboard',
     component: AdminComponent,
   },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'dashboard',
-  },
 ];
 
 @NgModule({

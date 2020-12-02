@@ -73,9 +73,6 @@ export class SignupFormComponent implements OnInit {
     if (this.signupForm.pristine || this.signupForm.invalid) {
       return;
     }
-    // if (!this.signupForm.get('_id').pristine) {
-    //   return;
-    // }
 
     this.loading = true;
     Swal.fire({
@@ -93,7 +90,6 @@ export class SignupFormComponent implements OnInit {
 
     this.authService.signup(newUser).subscribe(
       (data: any) => {
-        console.log(data);
         if (data.data.token) {
           localStorage.setItem(
             'myClient$T0k3n',
