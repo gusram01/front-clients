@@ -1,1 +1,25 @@
-<p>admin works!</p>
+<mat-toolbar class="toolbar__container">
+  <button mat-icon-button *ngIf="!sideVisible" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <h1>Dashboard</h1>
+  <span class="separator"></span>
+  <button mat-icon-button>
+    <mat-icon>home</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>home</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>account_circle</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-drawer-container class="drawer__container">
+  <mat-drawer class="drawer__side" [mode]="mode" [opened]="sideVisible" #drawer>
+    <app-expansion></app-expansion>
+  </mat-drawer>
+  <mat-drawer-content class="drawer__content">
+    <p>content</p>
+  </mat-drawer-content>
+</mat-drawer-container>

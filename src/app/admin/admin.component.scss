@@ -1,0 +1,14 @@
+.toolbar__container {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+.drawer__container {
+  height: calc(100vh - 60px);
+}
+.drawer__side {
+  width: 25vh;
+  min-width: 200px;
+  padding: 1rem;
+}

@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
-import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material/material.module';
 
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
@@ -14,8 +14,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    MaterialModule,
     ReactiveFormsModule,
+    MaterialModule,
   ],
 })
 export class SharedModule {}
