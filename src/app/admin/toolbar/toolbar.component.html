@@ -1,1 +1,10 @@
-
+<mat-toolbar>
+  <h1>
+    {{ title | async }}
+  </h1>
+  <span class="separator"></span>
+  <button mat-raised-button (click)="logout()">
+    <span class="btn-text">LogOut</span>
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>

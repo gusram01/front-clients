@@ -8,9 +8,18 @@ import { AdminComponent } from './admin.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ExpansionComponent } from './expansion/expansion.component';
 import { VerticalnavComponent } from './verticalnav/verticalnav.component';
+import { MynavComponent } from './mynav/mynav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AdminComponent, ToolbarComponent, ExpansionComponent, VerticalnavComponent],
+  declarations: [
+    AdminComponent,
+    ToolbarComponent,
+    ExpansionComponent,
+    VerticalnavComponent,
+    MynavComponent,
+    DashboardComponent,
+  ],
   imports: [CommonModule, AdminRoutingModule, MaterialModule],
 })
 export class AdminModule {}

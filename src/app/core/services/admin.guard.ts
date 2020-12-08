@@ -27,7 +27,17 @@ export class AdminGuard implements CanActivate, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return true;
+    const myClientToken = JSON.parse(localStorage.getItem('myClient$T0k3n'));
+    if (!myClientToken) {
+      this.router.navigateByUrl('/home');
+      return false;
+    }
+    const { exp } = jwt<Token>(myClientToken.token);
+    const flag = exp >= new Date().getTime() / 1000;
+    if (!flag) {
+      this.router.navigateByUrl('/home');
+    }
+    return flag;
   }
   canLoad(
     route: Route,

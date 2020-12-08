@@ -1,4 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { MynavComponent } from './mynav/mynav.component';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -7,12 +10,15 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
   sideVisible: boolean;
-  mode: string;
 
-  constructor() {}
+  constructor(private myNav: MatBottomSheet) {}
 
   ngOnInit(): void {
     this.getWidth();
+  }
+
+  openMyNav(): void {
+    this.myNav.open(MynavComponent);
   }
 
   @HostListener('window:resize')
@@ -22,6 +28,5 @@ export class AdminComponent implements OnInit {
 
   getWidth(): void {
     this.sideVisible = document.documentElement.getClientRects()[0].width > 600;
-    !this.sideVisible ? (this.mode = 'over') : (this.mode = 'side');
   }
 }

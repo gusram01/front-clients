@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-toolbar',
@@ -6,9 +9,24 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  @Input() showMenu: boolean;
+  title: Observable<string>;
 
-  constructor() {}
+  constructor(private router: Router) {
+    this.actualPath();
+  }
 
   ngOnInit(): void {}
+
+  actualPath(): void {
+    this.title = this.router.events.pipe(
+      filter((event) => event instanceof ActivationEnd),
+      filter((event: ActivationEnd) => !event.snapshot.firstChild),
+      map((data) => data.snapshot.data.title)
+    );
+  }
+
+  logout(): void {
+    localStorage.removeItem('myClient$T0k3n');
+    this.router.navigateByUrl('/');
+  }
 }

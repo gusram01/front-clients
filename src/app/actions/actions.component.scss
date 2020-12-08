@@ -1,0 +1,22 @@
+.btn-actions {
+  cursor: pointer;
+}
+.list-item__title {
+  margin-bottom: 2px;
+  padding: 0 14px;
+  font-weight: 600;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.list-item__text {
+  margin: 2px 0;
+  padding: 0 10px;
+  font-size: small;
+  color: rgba(0, 0, 0, 0.75);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}

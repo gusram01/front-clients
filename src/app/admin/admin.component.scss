@@ -4,6 +4,7 @@
   left: 0;
   bottom: 0;
 }
+
 .drawer__container {
   height: calc(100vh - 60px);
 }
@@ -11,4 +12,7 @@
   width: 25vh;
   min-width: 200px;
   padding: 1rem;
+}
+.btn-principal {
+  margin: 1rem;
 }
