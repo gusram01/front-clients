@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mynav',
@@ -7,10 +7,9 @@ import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
   styleUrls: ['./mynav.component.scss'],
 })
 export class MynavComponent {
-  constructor(private myNavRef: MatBottomSheetRef<MynavComponent>) {}
+  constructor(private myNavRef: MatDialogRef<MynavComponent>) {}
 
-  openLink(event: MouseEvent): void {
-    this.myNavRef.dismiss();
-    event.preventDefault();
+  openLink(some: any): void {
+    this.myNavRef.close();
   }
 }

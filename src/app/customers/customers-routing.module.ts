@@ -2,12 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomersComponent } from './customers.component';
 import { AdminGuard } from '../core/services/admin.guard';
+import { NewComponent } from './new/new.component';
 
 const routes: Routes = [
   {
     path: '',
+    data: { title: 'Customers' },
     canActivate: [AdminGuard],
     component: CustomersComponent,
+  },
+  {
+    path: 'new',
+    data: { title: 'New Client' },
+    canActivate: [AdminGuard],
+    component: NewComponent,
   },
 ];
 

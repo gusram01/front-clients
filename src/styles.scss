@@ -13,14 +13,71 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.mat-bottom-sheet-container {
+
+/* forms */
+.form__container {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px);
+  justify-content: center;
+  width: 100%;
+  padding-top: 1rem;
 }
+.form__card {
+  width: 90%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.form__body {
+  width: 100%;
+  margin: 0;
+}
+
+.form__item {
+  width: 100%;
+}
+
+.form__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+.actions__links {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 300px;
+}
+.actions__button {
+  width: 100%;
+  text-align: center;
+}
+
+.actions__button.mat-raised-button {
+  margin: 0;
+}
+
+.mat-dialog-container {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.change__sign {
+  width: 90%;
+  margin: 0 auto !important;
+  padding: 1rem;
+}
+
 .separator {
   flex: 1 1 auto;
 }
 .btn-block {
   width: 100%;
 }
+
 /* Animaciones */
 .animated {
   -webkit-animation-duration: 1s;

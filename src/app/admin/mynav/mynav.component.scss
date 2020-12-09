@@ -1,4 +1,26 @@
 .mynav {
-  width: 100%;
-  background: red;
+  display: grid;
+  grid-template-areas:
+    ". b1 b1 ."
+    ". . . ."
+    "b2 . . b3";
+}
+
+.button1 {
+  grid-area: b1;
+}
+.button2 {
+  grid-area: b2;
+}
+.button3 {
+  grid-area: b3;
+}
+.button1.mat-fab {
+  background: rgb(173, 255, 47);
+}
+.button2.mat-fab {
+  background: rgb(130, 100, 247);
+}
+.button3.mat-fab {
+  background: rgb(230, 109, 213);
 }

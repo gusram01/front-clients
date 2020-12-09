@@ -1,0 +1,74 @@
+<div class="newClient-container">
+  <form [formGroup]="newClient" (ngSubmit)="onSubmit()">
+    <!-- <h1 class="title">MyClients App</h1> -->
+    <h2 class="subtitle">Create Customers</h2>
+    <mat-list>
+      <p mat-subheader>General Info</p>
+      <mat-list-item>
+        <mat-form-field matLine appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstname" type="text" required />
+          <mat-error>
+            {{ newClient.controls.firstname.errors | errors }}
+          </mat-error>
+        </mat-form-field>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-form-field matLine appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastname" type="text" required />
+          <mat-error>
+            {{ newClient.controls.lastname.errors | errors }}
+          </mat-error>
+        </mat-form-field>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="gender-container" matLine>
+          <mat-button-toggle-group formControlName="gender" appearance="legacy">
+            <mat-button-toggle value="MALE">Male</mat-button-toggle>
+            <mat-button-toggle value="FEMALE">Female</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <mat-error
+          matLine
+          *ngIf="newClient.dirty && newClient.controls.gender.touched"
+        >
+          {{ newClient.controls.gender.errors | errors }}
+        </mat-error>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <p mat-subheader>Sensitive Info</p>
+      <mat-list-item>
+        <mat-form-field matLine appearance="standard">
+          <mat-label> CURP </mat-label>
+          <input matInput formControlName="curp" type="text" required />
+          <mat-error>
+            {{ newClient.controls.curp.errors | errors }}
+          </mat-error>
+        </mat-form-field>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-form-field matLine appearance="standard">
+          <mat-label> Mobile Phone </mat-label>
+          <input matInput formControlName="mobile" type="tel" required />
+          <mat-error>
+            {{ newClient.controls.mobile.errors | errors }}
+          </mat-error>
+        </mat-form-field>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-form-field matLine appearance="standard">
+          <mat-label> email </mat-label>
+          <input matInput formControlName="email" type="email" />
+        </mat-form-field>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <mat-action-list>
+      <button mat-raised-button [disabled]="loading">
+        <mat-icon>person_add</mat-icon>
+        <span class="btn-text">Send Info</span>
+      </button>
+    </mat-action-list>
+  </form>
+</div>

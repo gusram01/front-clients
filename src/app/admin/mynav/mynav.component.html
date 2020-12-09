@@ -1,6 +1,26 @@
 <div class="mynav">
-  <button (click)="openLink($event)" mat-stroked-button>btn1</button>
-  <button (click)="openLink($event)" mat-stroked-button>btn2</button>
-  <button (click)="openLink($event)" mat-stroked-button>btn3</button>
-  <button (click)="openLink($event)" mat-stroked-button>btn4</button>
+  <button
+    class="button1 mat-elevation-z2"
+    (click)="openLink($event)"
+    mat-fab
+    routerLink="/admin/dashboard/customers/new"
+  >
+    <mat-icon>person</mat-icon>
+  </button>
+  <button
+    class="button2 mat-elevation-z2"
+    (click)="openLink($event)"
+    mat-fab
+    routerLink=""
+  >
+    <mat-icon>article</mat-icon>
+  </button>
+  <button
+    class="button3 mat-elevation-z2"
+    (click)="openLink($event)"
+    mat-fab
+    routerLink=""
+  >
+    <mat-icon>directions_car</mat-icon>
+  </button>
 </div>

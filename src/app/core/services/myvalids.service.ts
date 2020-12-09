@@ -10,13 +10,17 @@ import { map } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
 interface MyError {
-  valid: boolean;
+  [key: string]: boolean;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class MyvalidsService {
+  gender(control: AbstractControl): ValidationErrors {
+    const str = control.value as string;
+    return ['MALE', 'FEMALE'].includes(str) ? null : { validGender: false };
+  }
   confirmPass(password1: string, password2: string): any {
     return (formGroup: FormGroup) => {
       const pass1 = formGroup.controls[password1];
@@ -24,7 +28,7 @@ export class MyvalidsService {
       if (pass1.value === pass2.value) {
         return pass2.setErrors(null);
       }
-      return pass2.setErrors({ valid: false });
+      return pass2.setErrors({ equalPasswords: false });
     };
   }
 
@@ -34,7 +38,7 @@ export class MyvalidsService {
         .isValid({ key: 'email', value: control.value })
         .pipe(
           map((data: { ok: boolean; data: boolean }) =>
-            !data.data ? { valid: false } : null
+            !data.data ? { uniqueEmail: false } : null
           )
         );
   }
@@ -43,7 +47,7 @@ export class MyvalidsService {
     return (control: AbstractControl): Observable<ValidationErrors> => {
       return authApi.isValid({ key: 'nick', value: control.value }).pipe(
         map((data: { ok: boolean; data: boolean }) => {
-          return !data.data ? { valid: false } : null;
+          return !data.data ? { uniqueUser: false } : null;
         })
       );
     };

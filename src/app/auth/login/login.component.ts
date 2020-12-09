@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +20,14 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
     this.initForm();
   }
 
   ngOnInit(): void {}
+
   initForm(): void {
     this.loginForm = this.fb.group({
       password: [
@@ -45,6 +48,10 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
+  }
+
+  back(): void {
+    this.location.back();
   }
 
   onSubmit(): void {

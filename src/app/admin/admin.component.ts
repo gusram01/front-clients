@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MynavComponent } from './mynav/mynav.component';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -11,14 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 export class AdminComponent implements OnInit {
   sideVisible: boolean;
 
-  constructor(private myNav: MatBottomSheet) {}
+  constructor(private myNav: MatDialog) {}
 
   ngOnInit(): void {
     this.getWidth();
   }
 
   openMyNav(): void {
-    this.myNav.open(MynavComponent);
+    this.myNav.open(MynavComponent, {
+      minWidth: '20%',
+      position: { bottom: '3rem' },
+    });
   }
 
   @HostListener('window:resize')

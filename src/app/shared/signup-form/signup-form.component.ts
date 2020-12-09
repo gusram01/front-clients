@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 import { MyvalidsService } from '../../core/services/myvalids.service';
 import { AuthService } from '../../core/services/auth.service';
 import { ResponseToken } from '../../core/models/token_response';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-signup-form',
@@ -16,6 +18,7 @@ export class SignupFormComponent implements OnInit {
   private emailPattern = new RegExp(
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
+  @Input() title: string;
   signupForm: FormGroup;
   loading = false;
   isHome = true;

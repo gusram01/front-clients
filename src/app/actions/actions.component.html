@@ -1,14 +1,29 @@
 <mat-list>
-  <small class="btn-text"> Customers section </small>
+  <small mat-subheader class="btn-text"> Customers section </small>
   <mat-list-item
     class="btn-actions"
     matRipple
     routerLink="/admin/dashboard/customers"
   >
+    <div class="icon"><mat-icon>person</mat-icon></div>
+    <div class="text">
+      <h4 matLine class="list-item__title">Main board</h4>
+      <p matLine class="list-item__text">
+        This is the main board for customers
+      </p>
+    </div>
+  </mat-list-item>
+  <mat-list-item
+    class="btn-actions"
+    matRipple
+    routerLink="/admin/dashboard/customers/new"
+  >
     <div class="icon"><mat-icon>person_add</mat-icon></div>
     <div class="text">
-      <h4 class="list-item__title">Main board</h4>
-      <p class="list-item__text">This is the main board for customers</p>
+      <h4 matLine class="list-item__title">New Client</h4>
+      <p matLine class="list-item__text">
+        This is the main board for customers
+      </p>
     </div>
   </mat-list-item>
   <mat-list-item>
@@ -26,7 +41,7 @@
 
   <mat-divider></mat-divider>
 
-  <small class="btn-text"> Cars section </small>
+  <small mat-subheader class="btn-text"> Cars section </small>
   <mat-list-item
     class="btn-actions"
     matRipple
@@ -34,8 +49,8 @@
   >
     <div class="icon"><mat-icon>directions_car</mat-icon></div>
     <div class="text">
-      <h4 class="list-item__title">Main board</h4>
-      <p class="list-item__text">This is the main board for cars</p>
+      <h4 matLine class="list-item__title">Main board</h4>
+      <p matLine class="list-item__text">This is the main board for cars</p>
     </div>
   </mat-list-item>
   <mat-list-item>
@@ -53,7 +68,7 @@
 
   <mat-divider></mat-divider>
 
-  <small class="btn-text"> Operations section </small>
+  <small mat-subheader class="btn-text"> Operations section </small>
   <mat-list-item
     class="btn-actions"
     matRipple
@@ -61,8 +76,10 @@
   >
     <div class="icon"><mat-icon>article</mat-icon></div>
     <div class="text">
-      <h4 class="list-item__title">Main board</h4>
-      <p class="list-item__text">This is the main board for operations</p>
+      <h4 matLine class="list-item__title">Main board</h4>
+      <p matLine class="list-item__text">
+        This is the main board for operations
+      </p>
     </div>
   </mat-list-item>
   <mat-list-item>

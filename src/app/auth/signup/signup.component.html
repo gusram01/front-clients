@@ -1,1 +1,16 @@
-<app-signup-form></app-signup-form>
+<div class="form__container">
+  <p>
+    <a mat-button routerLink="/home" color="accent">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+      Home
+    </a>
+  </p>
+
+  <app-signup-form [title]="title"></app-signup-form>
+
+  <p class="change__sign">
+    <button mat-stroked-button routerLink="/auth/login" class="btn-block">
+      Do you already have an account?
+    </button>
+  </p>
+</div>
