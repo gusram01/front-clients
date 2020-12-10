@@ -15,7 +15,7 @@ export class ErrorsPipe implements PipeTransform {
           str = 'This field is REQUIRED';
         }
         if (key === 'uniqueUser') {
-          str = 'Please try another username';
+          str = 'This username is alreadey used';
         }
         if (key === 'uniqueEmail') {
           str = 'This Email already used';

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -8,14 +8,15 @@ import { filter, map } from 'rxjs/operators';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent implements OnInit, AfterViewInit {
   title: Observable<string>;
 
-  constructor(private router: Router) {
-    this.actualPath();
-  }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+  ngAfterViewInit(): void {
+    this.actualPath();
+  }
 
   actualPath(): void {
     this.title = this.router.events.pipe(

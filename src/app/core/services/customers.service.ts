@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Customers } from '../models/customers';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { ListCustomersResponse, ListCustomers } from '../models/index';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +18,9 @@ export class CustomersService {
     return this.http.post(`${this.url}/customers`, client);
   }
 
-  list(): Observable<any> {
-    return this.http.get(`${this.url}/customers`);
+  list(): Observable<ListCustomers[]> {
+    return this.http
+      .get<ListCustomersResponse>(`${this.url}/customers`)
+      .pipe(map((data) => data.data));
   }
 }

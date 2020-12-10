@@ -5,8 +5,8 @@ import {
   AsyncValidatorFn,
   ValidationErrors,
 } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, debounceTime, switchMap, take } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
 interface MyError {
@@ -17,6 +17,11 @@ interface MyError {
   providedIn: 'root',
 })
 export class MyvalidsService {
+  constructor(private authService: AuthService) {}
+  private isEmptyInputValue(value: any): boolean {
+    return value === null || value.length === 0;
+  }
+
   gender(control: AbstractControl): ValidationErrors {
     const str = control.value as string;
     return ['MALE', 'FEMALE'].includes(str) ? null : { validGender: false };
@@ -32,23 +37,44 @@ export class MyvalidsService {
     };
   }
 
-  uniqueEmail(authApi: AuthService): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<ValidationErrors> =>
-      authApi
-        .isValid({ key: 'email', value: control.value })
-        .pipe(
-          map((data: { ok: boolean; data: boolean }) =>
-            !data.data ? { uniqueEmail: false } : null
-          )
-        );
+  uniqueEmail(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      if (this.isEmptyInputValue(control.value)) {
+        return of(null);
+      }
+      if (control.value === '') {
+        return of(null);
+      }
+
+      return control.valueChanges.pipe(
+        debounceTime(600),
+        take(1),
+        switchMap(() =>
+          this.authService
+            .isValid({ key: 'email', value: control.value })
+            .pipe(map((data) => (!data.data ? { uniqueEmail: false } : null)))
+        )
+      );
+    };
   }
 
-  uniqueUser(authApi: AuthService): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<ValidationErrors> => {
-      return authApi.isValid({ key: 'nick', value: control.value }).pipe(
-        map((data: { ok: boolean; data: boolean }) => {
-          return !data.data ? { uniqueUser: false } : null;
-        })
+  uniqueUser(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      if (this.isEmptyInputValue(control.value)) {
+        return of(null);
+      }
+      if (control.value === '') {
+        return of(null);
+      }
+
+      return control.valueChanges.pipe(
+        debounceTime(600),
+        take(1),
+        switchMap(() =>
+          this.authService
+            .isValid({ key: 'nick', value: control.value })
+            .pipe(map((data) => (!data.data ? { uniqueUser: false } : null)))
+        )
       );
     };
   }

@@ -31,3 +31,23 @@ export interface ResponseApi {
   ok: boolean;
   data: MyResponse | MyResponse[] | null | boolean | ResponseToken;
 }
+
+export interface uniqueResponse {
+  ok: boolean;
+  data: boolean;
+}
+export interface ListCustomersResponse {
+  ok: boolean;
+  data: ListCustomers[];
+}
+export interface ListCustomers {
+  clientid: string;
+  curp: string;
+  email: string;
+  firstname: string;
+  lastname: string;
+  mobile: string;
+  userid: string;
+  username: string;
+  _id: string;
+}

@@ -1,9 +1,5 @@
-<mat-card class="form__card mat-elevation-z3">
-  <form
-    [formGroup]="signupForm"
-    class="form animated fadeInRight"
-    (ngSubmit)="onSubmit()"
-  >
+<mat-card class="form__card mat-elevation-z3 animated fadeInLeft">
+  <form [formGroup]="signupForm" class="form" (ngSubmit)="onSubmit()">
     <mat-card-header *ngIf="title">
       <mat-card-title> MyClients App </mat-card-title>
       <mat-card-subtitle>
@@ -27,7 +23,7 @@
       <mat-form-field class="form__item" appearance="outline">
         <mat-label>Email</mat-label>
         <input
-          type="email"
+          type="text"
           matInput
           placeholder="Enter yor email"
           formControlName="email"

@@ -45,7 +45,7 @@ export class SignupFormComponent implements OnInit {
             Validators.minLength(6),
             Validators.maxLength(54),
           ],
-          this.myValids.uniqueUser(this.authService),
+          this.myValids.uniqueUser(),
         ],
         password: [
           '',
@@ -64,7 +64,7 @@ export class SignupFormComponent implements OnInit {
             Validators.maxLength(54),
             Validators.pattern(this.emailPattern),
           ],
-          this.myValids.uniqueEmail(this.authService),
+          this.myValids.uniqueEmail(),
         ],
       },
       {
@@ -82,10 +82,12 @@ export class SignupFormComponent implements OnInit {
       icon: 'info',
       title: 'Info sended',
       text: 'Please wait...',
-      showLoaderOnConfirm: true,
       allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false,
+      willOpen: () => Swal.showLoading(),
     });
-    Swal.showLoading();
+
     const newUser = {
       ...this.signupForm.value,
     };

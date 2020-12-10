@@ -63,10 +63,11 @@ export class LoginComponent implements OnInit {
       icon: 'info',
       title: 'Info sended',
       text: 'Please wait...',
-      showLoaderOnConfirm: true,
       allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false,
+      willOpen: () => Swal.showLoading(),
     });
-    Swal.showLoading();
 
     this.authService.login(this.loginForm.value).subscribe(
       (data: any) => {

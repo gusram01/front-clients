@@ -8,10 +8,11 @@ import { CoreModule } from '../core/core.module';
 
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
-  declarations: [ToolbarComponent, SignupFormComponent],
-  exports: [SignupFormComponent, ToolbarComponent],
+  declarations: [ToolbarComponent, SignupFormComponent, TableComponent],
+  exports: [SignupFormComponent, ToolbarComponent, TableComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,

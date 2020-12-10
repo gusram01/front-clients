@@ -5,12 +5,8 @@
       Home
     </a>
   </p>
-  <mat-card class="form__card mat-elevation-z3">
-    <form
-      [formGroup]="loginForm"
-      (ngSubmit)="onSubmit()"
-      class="form animated fadeInLeft"
-    >
+  <mat-card class="form__card mat-elevation-z3 animated fadeInRight">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
       <div class="form__title">
         <mat-card-header>
           <mat-card-title>MyClients app </mat-card-title>
