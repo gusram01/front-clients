@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Customers } from '../models/customers';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ListCustomersResponse, ListCustomers } from '../models/index';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +19,15 @@ export class CustomersService {
   }
 
   list(): Observable<ListCustomers[]> {
-    return this.http
-      .get<ListCustomersResponse>(`${this.url}/customers`)
-      .pipe(map((data) => data.data));
+    return this.http.get<ListCustomersResponse>(`${this.url}/customers`).pipe(
+      map(
+        (data) => {
+          return data.data;
+        },
+        catchError((err) => {
+          return of([]);
+        })
+      )
+    );
   }
 }

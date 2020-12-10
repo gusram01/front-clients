@@ -36,11 +36,14 @@
       <mat-form-field class="form__item" appearance="outline">
         <mat-label>Password</mat-label>
         <input
-          type="password"
+          [type]="hide ? 'password' : 'text'"
           matInput
           placeholder="Enter your password"
           formControlName="password"
         />
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
         <mat-error>
           {{ signupForm.controls.password.errors | errors }}
         </mat-error>
@@ -53,11 +56,16 @@
       >
         <mat-label>Confirm Password</mat-label>
         <input
-          type="password"
+          [type]="hideConfirm ? 'password' : 'text'"
           matInput
           placeholder="Confirm your password"
           formControlName="confirm"
         />
+        <button mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm">
+          <mat-icon>{{
+            hideConfirm ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
         <mat-error>
           {{ signupForm.controls.confirm.errors | errors }}
         </mat-error>
@@ -67,13 +75,12 @@
     <mat-card-actions class="form__actions">
       <button
         class="actions__button"
-        [disabled]="loading"
+        [disabled]="loading || signupForm.invalid || signupForm.pristine"
         mat-raised-button
         color="primary"
         type="submit"
       >
-        <mat-icon>person_add</mat-icon>
-        <span class="btn-text"> Signup </span>
+        <span class="btn-text"> Create account </span>
       </button>
     </mat-card-actions>
   </form>

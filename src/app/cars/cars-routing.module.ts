@@ -6,6 +6,7 @@ import { AdminGuard } from '../core/services/admin.guard';
 const routes: Routes = [
   {
     path: '',
+    data: { title: 'Cars' },
     canActivate: [AdminGuard],
     component: CarsComponent,
   },

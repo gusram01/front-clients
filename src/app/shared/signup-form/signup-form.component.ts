@@ -22,6 +22,8 @@ export class SignupFormComponent implements OnInit {
   signupForm: FormGroup;
   loading = false;
   isHome = true;
+  hide = true;
+  hideConfirm = true;
 
   constructor(
     private fb: FormBuilder,

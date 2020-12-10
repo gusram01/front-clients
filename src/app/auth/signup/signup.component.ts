@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-  title = 'Register Here';
+  title = 'Register to MyClients';
 
   constructor(private location: Location) {}
 

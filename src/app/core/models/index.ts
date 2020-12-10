@@ -40,6 +40,20 @@ export interface ListCustomersResponse {
   ok: boolean;
   data: ListCustomers[];
 }
+export interface ListCarsResponse {
+  ok: boolean;
+  data: ListCars[];
+}
+
+export interface ListCars {
+  brand: string;
+  description: string;
+  model: string;
+  price: number;
+  version: string;
+  year: string;
+  _id: string;
+}
 export interface ListCustomers {
   clientid: string;
   curp: string;
