@@ -21,7 +21,7 @@ export class CarsComponent implements OnInit {
     this.cars = this.carsService.list().pipe(
       map((data) =>
         data.map((item) => {
-          const { _id, ...returningData } = item;
+          const { _id, description, ...returningData } = item;
           return returningData;
         })
       )
