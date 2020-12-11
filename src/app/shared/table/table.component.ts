@@ -6,12 +6,14 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
-import { ListCustomers } from '../../core/models/index';
 import { map, tap } from 'rxjs/operators';
+import { ListCustomers } from '../../core/models/index';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -20,14 +22,19 @@ import { map, tap } from 'rxjs/operators';
 })
 export class TableComponent implements OnInit, AfterViewInit {
   @Input() dataSource: Observable<ListCustomers[]>;
+  @Input() listActions: string[];
+
   columns: string[];
+  displayedColumns: string[];
   data: MatTableDataSource<any>;
   isLoading = true;
+
+  @Output() idEvent = new EventEmitter<string | number>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {}
   ngAfterViewInit(): void {
@@ -37,7 +44,12 @@ export class TableComponent implements OnInit, AfterViewInit {
   getData(): void {
     this.dataSource
       .pipe(
-        tap((data) => (this.columns = Object.keys(data[0]))),
+        tap(
+          (data) =>
+            (this.columns = Object.keys(data[0]).filter(
+              (item) => item !== '_id'
+            ))
+        ),
         tap((data) =>
           !data
             ? (this.data = new MatTableDataSource([]))
@@ -49,6 +61,7 @@ export class TableComponent implements OnInit, AfterViewInit {
           this.data.sort = this.sort;
           this.data.paginator = this.paginator;
           this.isLoading = false;
+          this.displayedColumns = ['actions', ...this.columns];
         },
         (err) => {
           this.isLoading = false;
@@ -62,5 +75,16 @@ export class TableComponent implements OnInit, AfterViewInit {
     if (this.data.paginator) {
       this.data.paginator.firstPage();
     }
+  }
+  actions(event: Event, id: string | number, action: string): void {
+    if (action === 'details') {
+      this.router.navigate([this.actualPath(), id]);
+    }
+    this.idEvent.emit(id);
+  }
+
+  actualPath(): string {
+    //@ts-expect-error
+    return this.activatedRoute.snapshot._routerState.url;
   }
 }

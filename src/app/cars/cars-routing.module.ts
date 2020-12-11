@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CarsComponent } from './cars.component';
 import { AdminGuard } from '../core/services/admin.guard';
+import { CarsComponent } from './cars.component';
+import { DetailsComponent } from './details/details.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,12 @@ const routes: Routes = [
     data: { title: 'Cars' },
     canActivate: [AdminGuard],
     component: CarsComponent,
+  },
+  {
+    path: ':id',
+    data: { title: 'Car Detail' },
+    canActivate: [AdminGuard],
+    component: DetailsComponent,
   },
 ];
 

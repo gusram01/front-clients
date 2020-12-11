@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CarsService } from '../core/services/cars.service';
 import { map } from 'rxjs/operators';
+import { CarsService } from '../core/services/cars.service';
 
 @Component({
   selector: 'app-cars',
@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class CarsComponent implements OnInit {
   cars: Observable<any[]>;
+  actions = ['details', 'sale', 'edit'];
 
   constructor(private carsService: CarsService) {}
 
@@ -21,10 +22,14 @@ export class CarsComponent implements OnInit {
     this.cars = this.carsService.list().pipe(
       map((data) =>
         data.map((item) => {
-          const { _id, description, ...returningData } = item;
+          const { description, ...returningData } = item;
           return returningData;
         })
       )
     );
+  }
+
+  listenIdEvent(id: string | number): void {
+    console.log(id);
   }
 }

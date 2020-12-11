@@ -1,1 +1,6 @@
-<app-table *ngIf="cars" [dataSource]="cars"></app-table>
+<app-table
+  *ngIf="cars"
+  [dataSource]="cars"
+  [listActions]="actions"
+  (idEvent)="listenIdEvent($event)"
+></app-table>

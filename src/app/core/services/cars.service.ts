@@ -19,4 +19,11 @@ export class CarsService {
       catchError((err) => of([]))
     );
   }
+
+  findById(id: string): Observable<any> {
+    return this.http.get(`${this.url}/cars/${id}`).pipe(
+      map((data: any) => data.data),
+      catchError((err) => of([]))
+    );
+  }
 }

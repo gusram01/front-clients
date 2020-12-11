@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomersService } from '../core/services/customers.service';
+import { Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListCustomers } from '../core/models/index';
 import { map } from 'rxjs/operators';
+import { CustomersService } from '../core/services/customers.service';
+import { ListCustomers } from '../core/models/index';
 
 @Component({
   selector: 'app-customers',
@@ -11,6 +12,7 @@ import { map } from 'rxjs/operators';
 })
 export class CustomersComponent implements OnInit {
   customers: Observable<Partial<ListCustomers>[]>;
+  actions = ['details', 'sale', 'edit'];
 
   constructor(private clientsApi: CustomersService) {
     this.getClients();
@@ -22,10 +24,14 @@ export class CustomersComponent implements OnInit {
     this.customers = this.clientsApi.list().pipe(
       map((data) =>
         data.map((item) => {
-          const { _id, userid, clientid, email, ...returningData } = item;
+          const { userid, clientid, email, ...returningData } = item;
           return returningData;
         })
       )
     );
+  }
+
+  listenIdEvent(id: string | number): void {
+    console.log(id);
   }
 }
