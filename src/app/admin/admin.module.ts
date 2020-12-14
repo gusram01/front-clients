@@ -3,23 +3,24 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { MaterialModule } from '../material/material.module';
+import { SharedModule } from './shared/shared.module';
 
 import { AdminComponent } from './admin.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { ExpansionComponent } from './expansion/expansion.component';
-import { VerticalnavComponent } from './verticalnav/verticalnav.component';
-import { MynavComponent } from './mynav/mynav.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ExpansionComponent } from './components/expansion/expansion.component';
+import { VerticalnavComponent } from './components/verticalnav/verticalnav.component';
+import { MynavComponent } from './components/mynav/mynav.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
-    ToolbarComponent,
+    HeaderComponent,
     ExpansionComponent,
     VerticalnavComponent,
     MynavComponent,
-    DashboardComponent,
+    FooterComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule, MaterialModule],
+  imports: [CommonModule, AdminRoutingModule, MaterialModule, SharedModule],
 })
 export class AdminModule {}

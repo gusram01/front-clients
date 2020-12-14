@@ -37,13 +37,14 @@ body {
   width: 100%;
 }
 
-.form__actions {
+.mat-card-actions.form__actions {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   margin: 0;
 }
+
 .actions__links {
   display: flex;
   justify-content: space-around;

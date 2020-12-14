@@ -1,24 +1,15 @@
-<mat-toolbar class="toolbar__container">
-  <button mat-flat-button routerLink="dashboard" class="btn-block">
-    <mat-icon>home</mat-icon>
-    main
-  </button>
-  <span class="separator">
-    <button (click)="openMyNav()" class="btn-principal" mat-fab color="primary">
-      <mat-icon>add</mat-icon>
-    </button>
-  </span>
-  <button mat-flat-button routerLink="actions" class="btn-block">
-    <mat-icon>apps</mat-icon>
-    actions
-  </button>
-</mat-toolbar>
 <mat-drawer-container class="drawer__container">
+  <!--  SideNav  -->
   <mat-drawer class="drawer__side" mode="side" [opened]="sideVisible" #drawer>
     <app-expansion></app-expansion>
   </mat-drawer>
+
+  <!--  Content  -->
   <mat-drawer-content class="drawer__content">
-    <app-toolbar></app-toolbar>
+    <app-header></app-header>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
+
+<!--  Outsided footer  -->
+<app-footer></app-footer>

@@ -1,6 +1,4 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MynavComponent } from './mynav/mynav.component';
 
 @Component({
   selector: 'app-admin',
@@ -10,17 +8,10 @@ import { MynavComponent } from './mynav/mynav.component';
 export class AdminComponent implements OnInit {
   sideVisible: boolean;
 
-  constructor(private myNav: MatDialog) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.getWidth();
-  }
-
-  openMyNav(): void {
-    this.myNav.open(MynavComponent, {
-      minWidth: '20%',
-      position: { bottom: '3rem' },
-    });
   }
 
   @HostListener('window:resize')

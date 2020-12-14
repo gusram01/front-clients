@@ -1,0 +1,9 @@
+<mat-toolbar>
+  <h1>
+    {{ title | async }}
+  </h1>
+  <span class="separator"></span>
+  <button mat-stroked-button (click)="logout()" color="warn">
+    <span class="btn-text">Logout</span>
+  </button>
+</mat-toolbar>
