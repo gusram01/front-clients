@@ -65,7 +65,10 @@
       <mat-divider></mat-divider>
     </mat-list>
     <mat-action-list>
-      <button mat-raised-button [disabled]="loading">
+      <button
+        mat-raised-button
+        [disabled]="loading || !newClient.pristine || newClient.invalid"
+      >
         <mat-icon>person_add</mat-icon>
         <span class="btn-text">Send Info</span>
       </button>

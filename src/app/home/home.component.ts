@@ -1,12 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  constructor() {}
+export class HomeComponent {
+  showNav: boolean;
 
-  ngOnInit(): void {}
+  constructor() {
+    this.getWidth();
+  }
+
+  @HostListener('window: resize')
+  viewportWidth() {
+    this.getWidth();
+  }
+
+  private getWidth() {
+    this.showNav = document.documentElement.getClientRects()[0].width > 600;
+  }
 }

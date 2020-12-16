@@ -1,5 +1,16 @@
-<p>details works!</p>
-
-<pre>
-  {{ car | json }}
-</pre>
+<mat-tab-group>
+  <mat-tab label="General Info">
+    <ng-template matTabContent>
+      <pre>
+        {{ car | json }}
+      </pre>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Details">
+    <ng-template matTabContent>
+      <pre>
+        {{ details() | json }}
+      </pre>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
