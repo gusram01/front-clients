@@ -5,16 +5,6 @@ import { Component } from '@angular/core';
   template: ` <div class="app-container">
     <router-outlet></router-outlet>
   </div>`,
-  styles: [
-    `
-      .app-container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        max-width: 1368px;
-        margin: 0 auto;
-      }
-    `,
-  ],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {}

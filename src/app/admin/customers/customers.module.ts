@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { CustomersRoutingModule } from './customers-routing.module';
 import { MaterialModule } from '../../material/material.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 import { CustomersComponent } from './customers.component';
 import { NewComponent } from './components/new/new.component';

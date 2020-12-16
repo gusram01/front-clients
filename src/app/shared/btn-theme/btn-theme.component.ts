@@ -1,20 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss'],
+  selector: 'app-btn-theme',
+  templateUrl: './btn-theme.component.html',
+  styleUrls: ['./btn-theme.component.scss'],
 })
-export class ToolbarComponent implements OnInit {
-  @Input() showNav: boolean;
+export class BtnThemeComponent {
   checked: boolean;
 
   constructor(private theme: ThemeService) {
     this.checked = this.theme.default;
   }
-
-  ngOnInit(): void {}
 
   changeTheme() {
     this.checked = !this.checked;

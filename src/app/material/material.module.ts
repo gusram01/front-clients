@@ -23,11 +23,13 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { CdkTableModule } from '@angular/cdk/table';
 
 const modules = [
+  MatSlideToggleModule,
   MatProgressSpinnerModule,
   MatSortModule,
   MatButtonToggleModule,

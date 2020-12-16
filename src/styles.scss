@@ -1,6 +1,12 @@
 @import "themes/dark.scss";
 @include angular-material-theme($mydark-theme);
 
+.light-theme {
+  @include angular-material-theme($mylight-theme);
+  background: hsla(0, 10%, 90%);
+  color: hsla(0, 10%, 10%, 90%);
+}
+
 * {
   box-sizing: border-box;
 }
