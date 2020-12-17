@@ -6,6 +6,9 @@
 }
 
 .drawer__container {
+  height: calc(100vh);
+}
+.drawer__container-60 {
   height: calc(100vh - 60px);
 }
 .drawer__side {

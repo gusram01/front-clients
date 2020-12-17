@@ -1,4 +1,9 @@
-<mat-drawer-container class="drawer__container">
+<mat-drawer-container
+  class="drawer__container"
+  [ngClass]="{
+    'drawer__container-60': !sideVisible
+  }"
+>
   <!--  SideNav  -->
   <mat-drawer class="drawer__side" mode="side" [opened]="sideVisible" #drawer>
     <app-expansion></app-expansion>
@@ -12,4 +17,4 @@
 </mat-drawer-container>
 
 <!--  Outsided footer  -->
-<app-footer></app-footer>
+<app-footer *ngIf="!sideVisible"></app-footer>
